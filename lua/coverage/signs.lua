@@ -21,18 +21,24 @@ local default_priority = 10
 
 --- Defines signs.
 M.setup = function()
-    vim.fn.sign_define(M.name("covered"), {
-        text = config.opts.signs.covered.text,
-        texthl = config.opts.signs.covered.hl,
-    })
-    vim.fn.sign_define(M.name("uncovered"), {
-        text = config.opts.signs.uncovered.text,
-        texthl = config.opts.signs.uncovered.hl,
-    })
-    vim.fn.sign_define(M.name("partial"), {
-        text = config.opts.signs.partial.text,
-        texthl = config.opts.signs.partial.hl,
-    })
+    local signs = config.opts.signs
+
+    if signs.covered["hl"] ~= nil then
+        signs.covered["texthl"] = signs.covered["hl"]
+        signs.covered["hl"] = nil
+    end
+    if signs.uncovered["hl"] ~= nil then
+        signs.uncovered["texthl"] = signs.uncovered["hl"]
+        signs.covered["hl"] = nil
+    end
+    if signs.partial["hl"] ~= nil then
+        signs.partial["texthl"] = signs.partial["hl"]
+        signs.covered["hl"] = nil
+    end
+
+    vim.fn.sign_define(M.name("covered"), config.opts.signs.covered)
+    vim.fn.sign_define(M.name("uncovered"), config.opts.signs.uncovered)
+    vim.fn.sign_define(M.name("partial"), config.opts.signs.partial)
 end
 
 --- Returns a namespaced sign name.

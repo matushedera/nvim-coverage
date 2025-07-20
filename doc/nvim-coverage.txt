@@ -105,13 +105,13 @@ Valid keys for {opts.highlights}:
 Valid keys for {opts.signs}:
 
     covered: ~
-        Customize the highlight group and text used for covered signs.
+        Customize the highlight group and text used for covered signs. See :help sign_define for all supported options.
         Defaults to: `{ hl = "CoverageCovered", text = "▎" }`
     uncovered: ~
-        Customize the highlight group and text used for uncovered signs.
+        Customize the highlight group and text used for uncovered signs. See :help sign_define for all supported options.
         Defaults to: `{ hl = "CoverageUncovered", text = "▎" }`
     partial: ~
-        Customize the highlight group and text used for partial coverage signs.
+        Customize the highlight group and text used for partial coverage signs. See :help sign_define for all supported options.
         Defaults to: `{ hl = "CoveragePartial", text = "▎" }`
 
                                                             *coverage.summary*
